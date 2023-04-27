@@ -72,10 +72,12 @@ class PaintBoard {
   onClickNavigator(event) {
     event.currentTarget.classList.toggle("active");
     this.navigatorImage.classList.toggle("hide");
+    console.log(this.canvasEl.toDataURL());
     this.updateNavigator();
   }
 
   onClickEraser(event) {
+    console.log("onClickEraser");
     const isActive = event.currentTarget.classList.contains("active");
     this.MODE = isActive ? "NONE" : "ERASER";
     this.canvasEl.style.cursor = isActive ? "default" : "crosshair";
@@ -105,6 +107,7 @@ class PaintBoard {
   }
 
   onMouseDown(event) {
+    console.log("onMouseDown");
     if (this.MODE === "NONE") return;
     this.IsMouseDown = true;
     const currentPosition = this.getMousePosition(event);
@@ -136,6 +139,7 @@ class PaintBoard {
   }
 
   onClickBrush(event) {
+    console.log("onClickBrush");
     const isActive = event.currentTarget.classList.contains("active");
     this.MODE = isActive ? "NONE" : "BRUSH";
     this.canvasEl.style.cursor = isActive ? "default" : "crosshair";
